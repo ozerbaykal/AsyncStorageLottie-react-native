@@ -11,6 +11,8 @@ import {
 import React, {useEffect, useState} from 'react';
 import uuid from 'react-native-uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import LinearGradient from 'react-native-linear-gradient';
+import {Add} from 'iconsax-react-native';
 
 const TodoScreen = () => {
   //input içerisindeki değer
@@ -45,6 +47,16 @@ const TodoScreen = () => {
     setTodos(updatedTodos);
     saveTodos(updatedTodos);
   };
+
+  //copleted
+  const completeTodo = async id => {
+    const updatedTodos = todos.map(item => {
+      item.id === id ? {...item, completed: !item.completed} : item;
+    });
+    setTodos(updatedTodos);
+    saveTodos(updatedTodos);
+  };
+
   const updateTodos = id => {
     const exitingTodo = todos?.find(item => item.id === id);
     if (!exitingTodo) return;
@@ -79,7 +91,7 @@ const TodoScreen = () => {
 
     // Eğer metin boşsa, uyarı ver ve işlemi durdur
     if (trimmedTodo.length === 0) {
-      Alert.alert('Geçersiz Giriş', 'Lütfen boş bir todo ekleyemezsiniz!');
+      Alert.alert('Geçersiz Giriş', 'Lütfen bir metin giriniz!');
       return; // Boş bir todo eklenmesini engelle
     }
 
@@ -93,9 +105,9 @@ const TodoScreen = () => {
     setTodo(' ');
   };
   return (
-    <View style={styles.container}>
+    <LinearGradient colors={['#fef3c7', '#a78bfa']} style={styles.container}>
       <SafeAreaView>
-        <Text style={styles.headerText}>ReactNative AstncStorage</Text>
+        <Text style={styles.headerText}>TO-DO LIST</Text>
         <View style={styles.inputContainer}>
           <TextInput
             value={todo}
@@ -106,7 +118,7 @@ const TodoScreen = () => {
           <TouchableOpacity
             onPress={addToDo}
             style={[styles.button, styles.addButton]}>
-            <Text style={styles.buttonText}>Add</Text>
+            <Add size="42" color="#2ccce4" variant="Bold" />
           </TouchableOpacity>
         </View>
 
@@ -117,6 +129,14 @@ const TodoScreen = () => {
             <View style={styles.todoItem}>
               <Text style={{color: '#00000'}}>{item.text}</Text>
               <View style={{flexDirection: 'row'}}>
+                <View style={styles.buttonContainer}>
+                  <TouchableOpacity
+                    onPress={() => completeTodo(item?.id)}
+                    style={[styles.button, styles.completeButton]}>
+                    <Text style={styles.buttonText}>complete</Text>
+                  </TouchableOpacity>
+                </View>
+
                 <View style={styles.buttonContainer}>
                   <TouchableOpacity
                     onPress={() => deleteTodo(item?.id)}
@@ -136,13 +156,12 @@ const TodoScreen = () => {
           )}
         />
       </SafeAreaView>
-    </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#cff8f8',
     flex: 1,
     padding: 20,
   },
@@ -164,11 +183,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    marginLeft: 10,
+    marginLeft: 5,
     borderRadius: 5,
   },
   addButton: {
-    backgroundColor: 'blue',
+    //backgroundColor: 'blue',
     alignItems: 'center',
     justifyContent: 'center',
 

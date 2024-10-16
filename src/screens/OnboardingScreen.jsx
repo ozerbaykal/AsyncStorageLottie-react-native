@@ -1,16 +1,39 @@
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 import Lottie from 'lottie-react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const {width, height} = Dimensions.get('window');
 
 const OnboardingScreen = () => {
+  const navigation = useNavigation();
+
+  const handleDone = () => {
+    navigation.navigate('Home');
+  };
+  const doneButton = ({...props}) => {
+    return (
+      <TouchableOpacity style={styles.doneButton} {...props}>
+        <Text>Done</Text>
+      </TouchableOpacity>
+    );
+  };
   return (
     <View style={styles.container}>
       <Onboarding
+        onDone={handleDone}
+        onSkip={handleDone}
+        DoneButtonComponent={doneButton}
+        containerStyles={{paddingHorizontal: 15}}
         pages={[
           {
-            backgroundColor: '#fff',
+            backgroundColor: '#a7f3d0',
             image: (
               <View style={styles.lottie}>
                 <Lottie
@@ -21,11 +44,11 @@ const OnboardingScreen = () => {
                 />
               </View>
             ),
-            title: 'Onboarding',
-            subtitle: 'Done with React Native Onboarding Swiper',
+            title: 'Boost Your Productivity',
+            subtitle: 'Join our Udemig courses to enhance your skills!',
           },
           {
-            backgroundColor: '#fff',
+            backgroundColor: '#fef3ce',
             image: (
               <View style={styles.lottie}>
                 <Lottie
@@ -36,11 +59,12 @@ const OnboardingScreen = () => {
                 />
               </View>
             ),
-            title: 'Onboarding',
-            subtitle: 'Done with React Native Onboarding Swiper',
+            title: 'Work Without Interruptions',
+            subtitle:
+              'Complete your tasks smoothly with our productivity tips.',
           },
           {
-            backgroundColor: '#fff',
+            backgroundColor: '#a78bfa',
             image: (
               <View style={styles.lottie}>
                 <Lottie
@@ -51,8 +75,9 @@ const OnboardingScreen = () => {
                 />
               </View>
             ),
-            title: 'Onboarding',
-            subtitle: 'Done with React Native Onboarding Swiper',
+            title: 'Reach Higher Goals',
+            subtitle:
+              'Utilize our platform to achieve your profssional aspirations.',
           },
         ]}
       />
@@ -69,6 +94,9 @@ const styles = StyleSheet.create({
   },
   lottie: {
     width: width * 0.9,
-    height: height,
+    height: width,
+  },
+  doneButton: {
+    padding: 20,
   },
 });
