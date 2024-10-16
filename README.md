@@ -1,79 +1,83 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Visually Rich Todo List Application
 
-# Getting Started
+## 🎯 Project Overview
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+The Visually Rich Todo List Application is a modern mobile app built with React Native that allows users to effortlessly manage their daily tasks. Featuring Lottie animations for an engaging user experience, React Navigation for seamless screen transitions, and AsyncStorage for persistent data storage, this application offers both functionality and aesthetic appeal.
 
-## Step 1: Start the Metro Server
+## Video gif
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+![](./src/assests/images/screenrecord.gif)
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Todo Screen
 
-```bash
-# using npm
+![](./src/assests/images/todoscreen.png)
+
+## other pages
+
+![](./src/assests/images/screen1.png)
+
+![](./src/assests/images/screen2.png)
+
+## Features
+
+- Add Tasks: Easily add new tasks to your todo list.
+- Delete Tasks: Remove tasks you no longer need.
+- Update Tasks: Edit existing tasks to reflect changes.
+- Animations: Enhance user experience with Lottie animations.
+- Data Persistence: Tasks are saved locally using AsyncStorage.
+- Onboarding Screens: Guide new users through the app's features.
+- Responsive Design: Optimized for various device sizes.
+- Smooth Navigation: Seamless transitions between different screens using React Navigation.
+
+### Technologies and Libraries Used
+
+- React Native: Framework for building native apps using React.
+- AsyncStorage: Local storage solution for persisting data.
+- React Navigation: Library for managing in-app navigation.
+- Lottie: Library for adding animations.
+- React Native Onboarding Swiper: Component for creating onboarding screens.
+- UUID: Library for generating unique identifiers.
+- Iconsax React Native: Icon library for React Native.
+- React Native Linear Gradient: Library for adding gradient backgrounds.
+- React Native SVG: Library for rendering SVG images.
+
+### clone the repository
+
+```
+git clone https://github.com/ozerbaykal/AsyncStorageLottie-react-native.git
+```
+
+### Navigate to the project directory:
+
+```
+cd AsyncStorageLottie-react-native
+```
+
+### Install the dependencies:
+
+```
+npm install
+```
+
+### Run the app on a simulator or device:
+
+```
 npm start
 
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Start your Application
+## Contributing
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+Contributions are welcome! Please open an issue first to discuss what you would like to change.
 
-### For Android
+- 1.Fork the project
+- 2.Create your feature branch (git checkout -b feature/NewFeature)
+- 3.Commit your changes (git commit -m 'Add new feature')
+- 4.Push to the branch (git push origin feature/NewFeature)
+- 5.Open a Pull Request
 
-```bash
-# using npm
-npm run android
+<h2>Contact</h2>
 
-# OR using Yarn
-yarn android
-```
+Özer BAYKAL mail : baykalozer87@gmail.com
 
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Project Link: https://github.com/ozerbaykal/AsyncStorageLottie-react-native

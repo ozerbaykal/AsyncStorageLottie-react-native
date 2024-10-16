@@ -38,7 +38,7 @@ export default function HomeScreen() {
         <LinearGradient
           style={styles.addTaskButton}
           colors={['#a78bfa', '#fef3c7']}>
-          <Text style={styles.addTaskText}>NEw Task who's In?</Text>
+          <Text style={styles.addTaskText}>New Task Who's In?</Text>
         </LinearGradient>
       </TouchableOpacity>
 
