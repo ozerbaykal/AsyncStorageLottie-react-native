@@ -9,11 +9,18 @@ import {
 import Lottie from 'lottie-react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useNavigation} from '@react-navigation/native';
+import {removeItem} from '../utils/asyncStorage';
 
 const {width, height} = Dimensions.get('window');
 
 export default function HomeScreen() {
   const navigation = useNavigation();
+
+  const handlReset = async () => {
+    await removeItem('onboarded');
+    navigation.push('Onboard');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.lottie}>
@@ -35,9 +42,7 @@ export default function HomeScreen() {
         </LinearGradient>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Todo')}
-        style={styles.resetButton}>
+      <TouchableOpacity onPress={handlReset} style={styles.resetButton}>
         <LinearGradient
           style={styles.resetButton}
           colors={['#a7f3d0', '#ff6347']}>

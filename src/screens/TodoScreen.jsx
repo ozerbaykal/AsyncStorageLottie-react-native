@@ -12,7 +12,7 @@ import React, {useEffect, useState} from 'react';
 import uuid from 'react-native-uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
-import {Add} from 'iconsax-react-native';
+import {Add, CloseCircle, Edit, TickCircle, Trash} from 'iconsax-react-native';
 
 const TodoScreen = () => {
   //input içerisindeki değer
@@ -42,7 +42,7 @@ const TodoScreen = () => {
 
   const deleteTodo = id => {
     //id'si eşit olmayanaları çıkar ve bizi dizi olarak döndür
-    const updatedTodos = todos.filter(item => item.id !== id);
+    const updatedTodos = todos.filter(item => item?.id !== id);
 
     setTodos(updatedTodos);
     saveTodos(updatedTodos);
@@ -50,9 +50,9 @@ const TodoScreen = () => {
 
   //copleted
   const completeTodo = async id => {
-    const updatedTodos = todos.map(item => {
-      item.id === id ? {...item, completed: !item.completed} : item;
-    });
+    const updatedTodos = todos.map(item =>
+      item.id === id ? {...item, completed: !item.completed} : item,
+    );
     setTodos(updatedTodos);
     saveTodos(updatedTodos);
   };
@@ -127,13 +127,30 @@ const TodoScreen = () => {
           keyExtractor={item => item?.id?.toString()}
           renderItem={({item}) => (
             <View style={styles.todoItem}>
-              <Text style={{color: '#00000'}}>{item.text}</Text>
-              <View style={{flexDirection: 'row'}}>
+              <Text
+                style={[
+                  styles.todoText,
+                  item.completed && styles.copletedText,
+                ]}>
+                {item?.text}
+              </Text>
+
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <View style={styles.buttonContainer}>
                   <TouchableOpacity
                     onPress={() => completeTodo(item?.id)}
                     style={[styles.button, styles.completeButton]}>
-                    <Text style={styles.buttonText}>complete</Text>
+                    <Text style={styles.buttonText}>
+                      {item?.completed ? (
+                        <CloseCircle
+                          size="32"
+                          color="#f47373"
+                          variant="Outline"
+                        />
+                      ) : (
+                        <TickCircle size="32" color="#37d67a" variant="Bold" />
+                      )}
+                    </Text>
                   </TouchableOpacity>
                 </View>
 
@@ -141,14 +158,18 @@ const TodoScreen = () => {
                   <TouchableOpacity
                     onPress={() => deleteTodo(item?.id)}
                     style={[styles.button, styles.deleteButton]}>
-                    <Text style={styles.buttonText}>Delete</Text>
+                    <Text style={styles.buttonText}>
+                      <Trash size="32" color="#f47373" variant="Outline" />
+                    </Text>
                   </TouchableOpacity>
                 </View>
                 <View style={styles.buttonContainer}>
                   <TouchableOpacity
                     onPress={() => updateTodos(item?.id)}
                     style={[styles.button, styles.updateButton]}>
-                    <Text style={styles.buttonText}>Update</Text>
+                    <Text style={styles.buttonText}>
+                      <Edit size="32" color="#37d67a" variant="Outline" />
+                    </Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -196,7 +217,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
   },
-  buttonContainer: {},
+
   todoItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -204,12 +225,23 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   deleteButton: {
-    backgroundColor: 'red',
+    //backgroundColor: 'red',
     padding: 10,
   },
   updateButton: {
-    backgroundColor: 'green',
+    //backgroundColor: 'green',
     padding: 10,
+  },
+  todoText: {
+    color: '#000',
+    textDecorationLine: 'none',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  copletedText: {
+    textDecorationLine: 'line-through',
+    textDecorationColor: 'red',
+    color: 'gray',
   },
 });
 export default TodoScreen;
